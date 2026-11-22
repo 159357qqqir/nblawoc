@@ -9,7 +9,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: 拉取仓库代码
+      - name: 拉取代码
         uses: actions/checkout@v4
 
       - name: 安装gcc
@@ -18,5 +18,8 @@ jobs:
       - name: 编译 myshell.c
         run: gcc myshell.c -o myshell
 
-      - name: 运行测试
-        run: echo "编译成功！"
+      - name: 上传编译好的程序（可以下载）
+        uses: actions/upload-artifact@v4
+        with:
+          name: myshell-bin
+          path: ./myshell
