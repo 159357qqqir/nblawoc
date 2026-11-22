@@ -1,0 +1,22 @@
+name: Build myshell
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 拉取仓库代码
+        uses: actions/checkout@v4
+
+      - name: 安装gcc
+        run: sudo apt update && sudo apt install -y gcc
+
+      - name: 编译 myshell.c
+        run: gcc myshell.c -o myshell
+
+      - name: 运行测试
+        run: echo "编译成功！"
