@@ -14,7 +14,7 @@ jobs:
           ndk-version: r27b
       - name: compile
         run: |
-          $NDK/toolchains/llvm/prebuilt/linux-x86_64/bin/aarch64-linux-android34-clang myshell.c -o myshell
+          $NDK/toolchains/llvm/prebuilt/linux-x86_64/bin/clang --target=aarch64-linux-android34 myshell.c -o myshell
       - name: upload artifact
         uses: actions/upload-artifact@v4
         with:
